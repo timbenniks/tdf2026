@@ -1,0 +1,71 @@
+{
+  "name": "tdf-menubar",
+  "version": "0.1.0",
+  "description": "macOS menu bar app for following Tour de France live race state via the public Race Center API.",
+  "private": true,
+  "type": "module",
+  "main": "./out/main/index.js",
+  "author": "Tim Benniks",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "npm run typecheck && electron-vite build",
+    "preview": "electron-vite preview",
+    "start": "electron-vite preview",
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json",
+    "typecheck:web": "tsc --noEmit -p tsconfig.web.json",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dist": "npm run build && electron-builder --mac",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\""
+  },
+  "dependencies": {
+    "eventsource": "^4.1.0",
+    "leaflet": "^1.9.4",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.1",
+    "@types/leaflet": "^1.9.21",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "electron": "^42.5.0",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "prettier": "^3.4.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.6",
+    "vitest": "^4.1.9"
+  },
+  "build": {
+    "appId": "fr.timbenniks.tdfmenubar",
+    "productName": "TdF Menu Bar",
+    "files": [
+      "out/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.sports",
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg"
+      ],
+      "extendInfo": {
+        "LSUIElement": true
+      }
+    },
+    "dmg": {
+      "title": "TdF Menu Bar",
+      "icon": "build/icon.icns",
+      "contents": [
+        { "x": 140, "y": 180 },
+        { "x": 400, "y": 180, "type": "link", "path": "/Applications" }
+      ]
+    }
+  }
+}
