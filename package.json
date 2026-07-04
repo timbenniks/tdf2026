@@ -18,8 +18,6 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "dist": "npm run build && electron-builder --mac",
-    "dev:web": "npm --prefix web run dev",
-    "build:web": "npm --prefix web run build",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\""
   },
   "dependencies": {

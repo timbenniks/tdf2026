@@ -1,6 +1,0 @@
-node_modules/
-.next/
-out/
-functions/lib/race-engine.mjs
-*.log
-.DS_Store
